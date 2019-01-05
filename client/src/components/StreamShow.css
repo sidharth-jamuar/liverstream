@@ -1,0 +1,13 @@
+.keyframe{
+        animation-duration: 1s;
+        animation-name: check;
+}
+
+@keyframes check{
+ 0%{
+     transform: translateX(10px)
+ }
+ 100%{
+     transform:translateX(100px)
+ }
+}
