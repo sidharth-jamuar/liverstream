@@ -2,8 +2,10 @@ import React from "react";
 import {Field,reduxForm} from "redux-form"
 import {Button,Form} from "semantic-ui-react"
 import {connect} from "react-redux"
+
 import {createStream} from "../actions/streams"
 class StreamNew extends React.Component{
+    
     renderInput(formProps){
         return <div><Form.Field><label style={{color:"white"}}>{formProps.label}</label><input {...formProps.input} autoComplete="off" /> </Form.Field> <br />
         <div>{formProps.meta.touched && formProps.meta.error ?formProps.meta.error:""}</div>
@@ -14,7 +16,7 @@ class StreamNew extends React.Component{
         this.props.dispatch(createStream(formValues,this.props.userId))
     }
     render(){
-       
+
     return(
         <div>
         <Form onSubmit={this.props.handleSubmit(this.onSubmit)}><Field name="title" component={this.renderInput} label="Enter Title"/>

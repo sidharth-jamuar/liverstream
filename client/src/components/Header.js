@@ -26,7 +26,7 @@ class Header extends Component {
         return (
             <div>
                 <Menu pointing>
-                    <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} href="/streams/mystreams" />
+                    <Menu.Item name='home' active={activeItem === 'home'} onClick={this.handleItemClick} href="/" />
 
                     {this.props.isSignedIn && <Menu.Item name='home' active={activeItem === 'create'} onClick={this.handleItemClick}>  <Modal
                         trigger={<Button onClick={this.handleOpen}>Create New Stream</Button>}

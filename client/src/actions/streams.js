@@ -5,6 +5,7 @@ const stream={...formValues,userId:id}
     return async dispatch=>{
        const res=await axios.post("/addStream",stream)
         dispatch({type:"CREATE_STREAM",payload:res.data})
+        window.location="/"
     }
 }
 export const fetchStreams=()=>{
@@ -18,7 +19,7 @@ export const fetchStreamsByUserId=(id)=>{
     
     return async dispatch =>{
         const res=await axios.post("/mystreams",body)
-        console.log(res.data)
+        
         dispatch({type:"USER_STREAMS",payload:res.data})
     }
 }
@@ -35,11 +36,11 @@ export const editStream=(id,formValues)=>{
     }
 }
 export const deleteStream=(id,history)=>{
-
+    
     return async dispatch =>{
         const res= await axios.delete(`/stream/${id}`)
       
-        dispatch({type:"DELETE_STREAM",payload:id})
+        dispatch({type:"DELETE_STREAM",payload:res.data})
       
     }
     

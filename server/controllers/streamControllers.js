@@ -18,5 +18,5 @@ exports.get_stream=(req,res)=>{
 }
 exports.delete_stream=(req,res)=>{
     console.log(req.params)
-    Streams.findOneAndRemove({_id:req.params.id}).then(stream=>{console.log("deleted")})
+    Streams.findOneAndRemove({_id:req.params.id}).then(stream=>{res.send(req.params.id)})
 }

@@ -2,17 +2,16 @@ import React from "react";
 import {connect} from "react-redux"
 import { Card, Icon, Image } from 'semantic-ui-react'
 import {fetchStreams} from "../actions/streams"
+import {Link} from "react-router-dom"
 class StreamList extends React.Component{
     componentDidMount(){
         this.props.dispatch(fetchStreams())
     }
-    selectedStream=(stream,id)=>{
-        this.props.history.push({pathname:`/stream/${id}`,state:stream})
-    }
+    
     renderStreams(){
         return this.props.streams.map(stream=>{
             return <div style={{display:"inline-block"}} id="stream-list" key={stream._id}>
-             <Card onClick={e=>{this.selectedStream(stream,stream._id)}}>
+             <Link to={`/streams/${stream._id}`}><Card >
     <Image src='' height="140px" />
     <Card.Content>
       <Card.Header>{stream.title}</Card.Header>
@@ -20,7 +19,7 @@ class StreamList extends React.Component{
       <Card.Description>{stream.description}</Card.Description>
     </Card.Content>
     
-  </Card>
+  </Card></Link>
             </div>
         })
     }
@@ -40,7 +39,7 @@ class StreamList extends React.Component{
 }
 const mapStateToProps=state=>{
     return{
-        streams:Object.values(state.streams)
+        streams:state.streams
     }
 }
 export default connect(mapStateToProps)(StreamList)
