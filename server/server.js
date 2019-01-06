@@ -3,7 +3,7 @@ const mongoose=require("mongoose")
 const {Streams}= require("./models/streams")
 const app=express()
 const bodyParser=require("body-parser")
-
+//init database
 mongoose.Promise=global.Promise;
 mongoose.connect("mongodb://localhost:27017/streams",{ useNewUrlParser: true })
 app.use(bodyParser.json())
